@@ -21,4 +21,9 @@ dependencies {
     implementation(libs.edc.fc.spi.crawler)
     runtimeOnly(libs.edc.fc.core)
     runtimeOnly(libs.edc.fc.api)
+
+    if (project.properties.getOrDefault("persistence", "false") == "true") {
+        runtimeOnly(libs.edc.fc.sql.catalog)
+        println("This runtime compiles PostgreSQL. You will need properly configured Postgres")
+    }
 }
